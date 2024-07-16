@@ -598,7 +598,7 @@ function addWinnerToList(winner) {
         clearInterval(interval);
       }
     }, 100); // Hiển thị một ký tự mỗi 100ms
-  }, 2000); // Trì hoãn 3 giây trước khi bắt đầu
+  }, 12000); // Trì hoãn 3 giây trước khi bắt đầu
 }
 function showNextButton() {
   const buttons = document.querySelectorAll("#buttonsContainer button");
@@ -613,19 +613,36 @@ function showNextButton() {
 
 function createPrizeButtons() {
   const buttonsContainer = document.getElementById("buttonsContainer");
+  const Container = document.getElementById("cc");
   buttonsContainer.innerHTML = ""; // Xóa các nút cũ nếu có
-  prizes.forEach(() => {
+  
+  prizes.forEach(prize => {
     const button = document.createElement("button");
-    button.textContent = `QUAY`;
-    button.addEventListener("click", handleDrawPrize);
+    button.textContent = "QUAY";
+    button.addEventListener("click", function() {
+      playSound();
+      Container.style.display = "none"; // Ẩn container khi click vào nút "QUAY"
+      setTimeout(function() {
+        Container.style.display = "block";
+        endSound() // Hiển thị lại sau 2 giây
+      }, 10000);
+      handleDrawPrize(prize); // Gọi hàm xử lý với giải thưởng tương ứng
+    });
     buttonsContainer.appendChild(button);
   });
-
-  // Hiển thị nút quay đầu tiên
   showNextButton();
 }
-
+const audio = document.getElementById("backgroundMusic");
+function playSound() {
+  audio.play();
+}
+function endSound() {
+  const audio = document.getElementById("backgroundMusic");
+  audio.pause();
+  audio.currentTime = 0;
+}
 document.addEventListener("DOMContentLoaded", () => {
+  
   winners = [];
   remainingParticipants = [...participants];
   document.getElementById("winnersList").innerHTML = "";
