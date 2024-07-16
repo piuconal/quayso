@@ -499,13 +499,13 @@ const participants = [
 ];
 
 const prizes = [
+  { title: "😘KHUYẾN KHÍCH", count: 21 },
+  { title: "5️⃣GIẢI NĂM", count: 15 },
+  { title: "4️⃣GIẢI TƯ", count: 15 },
+  { title: "3️⃣GIẢI BA", count: 10 },
+  { title: "2️⃣GIẢI NHÌ", count: 3 },
+  { title: "1️⃣GIẢI NHẤT", count: 1 },
   { title: "🫅🏼GIẢI ĐẶC BIỆT", count: 1 },
-  { title: "Giải nhất", count: 1 },
-  { title: "Giải nhì", count: 3 },
-  { title: "Giải ba", count: 10 },
-  { title: "Giải tư", count: 15 },
-  { title: "Giải năm", count: 15 },
-  { title: "Giải khuyến khích", count: 21 },
 ];
 
 let winners = [];
@@ -557,22 +557,22 @@ function addWinnerToList(winner) {
     case "🫅🏼GIẢI ĐẶC BIỆT":
       color = "red"; // Đặt màu chữ cho giải đặc biệt là đỏ
       break;
-    case "Giải nhất":
+    case "1️⃣GIẢI NHẤT":
       color = "blue"; // Đặt màu chữ cho giải nhất là xanh
       break;
-    case "Giải nhì":
+    case "2️⃣GIẢI NHÌ":
       color = "green"; // Đặt màu chữ cho giải nhì là màu xanh lá cây
       break;
-    case "Giải ba":
+    case "3️⃣GIẢI BA":
       color = "purple"; // Đặt màu chữ cho giải ba là màu tím
       break;
-    case "Giải tư":
+    case "4️⃣GIẢI TƯ":
       color = "orange"; // Đặt màu chữ cho giải tư là màu cam
       break;
-    case "Giải năm":
+    case "5️⃣GIẢI NĂM":
       color = "brown"; // Đặt màu chữ cho giải năm là màu nâu
       break;
-    case "Giải khuyến khích":
+    case "😘KHUYẾN KHÍCH":
       color = "gray"; // Đặt màu chữ cho giải khuyến khích là màu xám
       break;
     default:
@@ -598,7 +598,17 @@ function addWinnerToList(winner) {
         clearInterval(interval);
       }
     }, 100); // Hiển thị một ký tự mỗi 100ms
-  }, 12000); // Trì hoãn 3 giây trước khi bắt đầu
+  }, 17000); // Trì hoãn 3 giây trước khi bắt đầu
+  // Xóa các phần tử li cũ sau 3 giây
+  setTimeout(() => {
+    const items = winnersList.querySelectorAll("li");
+    if (items.length > 1) {
+      items[0].classList.add("fade-out");
+      setTimeout(() => {
+        winnersList.removeChild(items[0]);
+      }, 19000); // Thời gian cho hiệu ứng fade out
+    }
+  }, 20000);
 }
 function showNextButton() {
   const buttons = document.querySelectorAll("#buttonsContainer button");
@@ -610,22 +620,23 @@ function showNextButton() {
     }
   });
 }
-
+const videoContainer = document.getElementById("myVideo");
 function createPrizeButtons() {
   const buttonsContainer = document.getElementById("buttonsContainer");
   const Container = document.getElementById("cc");
   buttonsContainer.innerHTML = ""; // Xóa các nút cũ nếu có
-  
-  prizes.forEach(prize => {
+
+  prizes.forEach((prize) => {
     const button = document.createElement("button");
     button.textContent = "QUAY";
-    button.addEventListener("click", function() {
+    button.addEventListener("click", function () {
       playSound();
+      videoContainer.play();
       Container.style.display = "none"; // Ẩn container khi click vào nút "QUAY"
-      setTimeout(function() {
+      setTimeout(function () {
         Container.style.display = "block";
-        endSound() // Hiển thị lại sau 2 giây
-      }, 10000);
+        endSound(); // Hiển thị lại sau 2 giây
+      }, 15000);
       handleDrawPrize(prize); // Gọi hàm xử lý với giải thưởng tương ứng
     });
     buttonsContainer.appendChild(button);
@@ -642,7 +653,6 @@ function endSound() {
   audio.currentTime = 0;
 }
 document.addEventListener("DOMContentLoaded", () => {
-  
   winners = [];
   remainingParticipants = [...participants];
   document.getElementById("winnersList").innerHTML = "";
