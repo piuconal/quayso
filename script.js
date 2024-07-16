@@ -1,3 +1,4 @@
+let k = 0;
 const participants = [
   "Hà Văn Lượng ❤️ 13010084",
   "Nguyễn Văn Minh ❤️ 13040600",
@@ -542,12 +543,14 @@ function handleDrawPrize() {
     if (currentPrizeCount >= prize.count) {
       currentPrizeIndex++;
       currentPrizeCount = 0;
+      k=0;
     }
 
     showNextButton();
   }
 }
 function addWinnerToList(winner) {
+  k++;
   const winnersList = document.getElementById("winnersList");
   const listItem = document.createElement("li");
 
@@ -579,17 +582,16 @@ function addWinnerToList(winner) {
       color = "black"; // Màu chữ mặc định là đen
       break;
   }
-
   // Tạo nội dung cho listItem với màu chữ được chọn
-  const text = `${winner.prize}: ${winner.name}`;
+  const text = `${k}.${winner.prize}: ${winner.name}`;
   listItem.innerHTML = `<span style="color: ${color};"></span>`;
+  // k++;
   winnersList.appendChild(listItem);
 
   // Hiển thị từng ký tự sau 3 giây
   setTimeout(() => {
     const span = listItem.querySelector("span");
     let index = 0;
-
     const interval = setInterval(() => {
       if (index < text.length) {
         span.innerHTML += text[index];
@@ -598,7 +600,7 @@ function addWinnerToList(winner) {
         clearInterval(interval);
       }
     }, 100); // Hiển thị một ký tự mỗi 100ms
-  }, 17000); // Trì hoãn 3 giây trước khi bắt đầu
+  }, 15000); // Trì hoãn 3 giây trước khi bắt đầu
   // Xóa các phần tử li cũ sau 3 giây
   setTimeout(() => {
     const items = winnersList.querySelectorAll("li");
@@ -606,9 +608,9 @@ function addWinnerToList(winner) {
       items[0].classList.add("fade-out");
       setTimeout(() => {
         winnersList.removeChild(items[0]);
-      }, 19000); // Thời gian cho hiệu ứng fade out
+      }, 1200); // Thời gian cho hiệu ứng fade out
     }
-  }, 20000);
+  }, 60000);
 }
 function showNextButton() {
   const buttons = document.querySelectorAll("#buttonsContainer button");
@@ -632,7 +634,7 @@ function createPrizeButtons() {
     button.addEventListener("click", function () {
       playSound();
       videoContainer.play();
-      Container.style.display = "none"; // Ẩn container khi click vào nút "QUAY"
+      Container.style.display = "block"; // Ẩn container khi click vào nút "QUAY"
       setTimeout(function () {
         Container.style.display = "block";
         endSound(); // Hiển thị lại sau 2 giây
@@ -644,12 +646,14 @@ function createPrizeButtons() {
   showNextButton();
 }
 const audio = document.getElementById("backgroundMusic");
+const audio1 = document.getElementById("backgroundMusic1");
 function playSound() {
   audio.play();
 }
 function endSound() {
   const audio = document.getElementById("backgroundMusic");
   audio.pause();
+  audio1.play();
   audio.currentTime = 0;
 }
 document.addEventListener("DOMContentLoaded", () => {

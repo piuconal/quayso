@@ -1,110 +1,108 @@
 body {
-    background-image: url('back4.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
+  background-image: url("back4.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
 }
 
 .container {
-    position: absolute;
-    margin-top: 350px;
-    margin-left: 1300px;
-    text-align: center;
-    background: none;
-    padding: 20px;
-    border-radius: 8px;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-    width: 550px;
-    height: 500px;
+  position: absolute;
+  margin-top: 350px;
+  margin-left: 1150px;
+  text-align: center;
+  background: none;
+  padding: 20px;
+  border-radius: 8px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  width: 700px;
+  height: 500px;
 }
 
 @media (max-width: 768px) {
-    .container {
+  .container {
     width: 100%;
-    }
-    ul#winnersList span{
-        font-size: 14px;
-
-    }
-    .container {
-        margin-top: 1400px;
-        margin-left: 0px;
-    }
+  }
+  ul#winnersList span {
+    font-size: 14px;
+  }
+  .container {
+    margin-top: 1400px;
+    margin-left: 0px;
+  }
 }
 
 button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    margin-top: 20px;
-    display: none; /* Mặc định ẩn nút */
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  margin-top: 20px;
+  display: none; /* Mặc định ẩn nút */
 }
 
 button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 #result {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 #winnersList {
-    list-style: none;
-    padding: 0;
-    max-height: 500px; /* Chiều cao tối đa của danh sách */
-    overflow-y: auto;  /* Thêm thanh cuộn dọc khi nội dung vượt quá chiều cao */
-    border-radius: 4px;
+  list-style: none;
+  padding: 0;
+  max-height: 500px; /* Chiều cao tối đa của danh sách */
+  overflow-y: auto; /* Thêm thanh cuộn dọc khi nội dung vượt quá chiều cao */
+  border-radius: 4px;
 }
 
-
 #winnersList li {
-    border-radius: 30px;
-    background-color: #e0e4eb;
-    text-align: left;
-    font-size: 18px;
-    margin: 15px 0;
-    padding: 14px;
-    padding-left: 25px;
-    font-weight: bold;
-    /* border-bottom: 1px solid #ddd; */
+  border-radius: 30px;
+  background-color: #e0e4eb;
+  text-align: left;
+  font-size: 23px;
+  margin: 15px 0;
+  padding: 14px;
+  padding-left: 25px;
+  font-weight: bold;
+  /* border-bottom: 1px solid #ddd; */
 }
 
 #winnersList li:last-child {
-    border-bottom: none; /* Xóa đường viền dưới của mục cuối cùng */
+  border-bottom: none; /* Xóa đường viền dưới của mục cuối cùng */
 }
 video {
-    margin-top: 300px;
-    width: 400px; /* Set the width to your desired size */
-    height: 400px; /* Set the height to the same value as the width */
-    border-radius: 50%; /* This makes the video element circular */
-    overflow: hidden; /* Ensure any overflow content is hidden */
+  margin-top: 300px;
+  width: 400px; /* Set the width to your desired size */
+  height: 400px; /* Set the height to the same value as the width */
+  border-radius: 50%; /* This makes the video element circular */
+  overflow: hidden; /* Ensure any overflow content is hidden */
 }
 
 #buttonsContainer button {
-    position: absolute;
-    margin-top: 186px;
-    right: 898px;
-    height: 80px;
-    border-radius: 50%;
-    font-weight: bold;
-    z-index: 9999;
+  position: absolute;
+  margin-top: 186px;
+  right: 898px;
+  height: 80px;
+  border-radius: 50%;
+  font-weight: bold;
+  z-index: 9999;
 }
 
 #buttonsContainer button:hover {
-    transition: 0.2s ease-in-out;
-    background-color: red; /* Darker green on hover */
+  transition: 0.2s ease-in-out;
+  background-color: red; /* Darker green on hover */
 }
 .fade-out {
-    opacity: 0;
-    transition: opacity 3s;
-  }
+  opacity: 0;
+  transition: opacity 3s;
+}
