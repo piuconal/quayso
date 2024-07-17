@@ -600,7 +600,7 @@ function addWinnerToList(winner) {
         clearInterval(interval);
       }
     }, 100); // Hiển thị một ký tự mỗi 100ms
-  }, 15); // Trì hoãn 3 giây trước khi bắt đầu
+  }, 15000); // Trì hoãn 3 giây trước khi bắt đầu
   // Xóa các phần tử li cũ sau 3 giây
   setTimeout(() => {
     const items = winnersList.querySelectorAll("li");
@@ -639,7 +639,7 @@ function createPrizeButtons() {
       setTimeout(function () {
         Container.style.display = "block";
         endSound(); // Hiển thị lại sau 2 giây
-      }, 15);
+      }, 15000);
       handleDrawPrize(prize); // Gọi hàm xử lý với giải thưởng tương ứng
     });
     buttonsContainer.appendChild(button);
