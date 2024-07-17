@@ -5,9 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quay Trúng Thưởng</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="https://lh3.googleusercontent.com/-BnWmZBj6b9ycH3atIcK8TyCfaIgGf5aOrqx4BjWYIxpZbaFEnsYvEviD9_zBxS3NzUB=w300">
+    <link
+      rel="icon"
+      href="https://lh3.googleusercontent.com/-BnWmZBj6b9ycH3atIcK8TyCfaIgGf5aOrqx4BjWYIxpZbaFEnsYvEviD9_zBxS3NzUB=w300"
+    />
   </head>
   <body>
+    <div id="videoOverlay" class="video-overlay">
+      <video
+        style="width: 2120px; height: 1090px"
+        id="demoVideo"
+        src="demo.mp4"
+        controls
+        autoplay
+      ></video>
+    </div>
     <div class="container" id="cc">
       <div id="buttonsContainer">
         <!-- Nút quay cho từng giải thưởng sẽ được thêm vào đây -->
@@ -24,6 +36,8 @@
     </div>
     <video id="myVideo" src="qs.mp4"></video>
     <p id="backBtn">NGƯỜI NHẬN THƯỞNG KHÔNG CÓ MẶT</p>
+    <img id="khung" src="khung.png" alt="">
+    <img id="ten" src="ten.png" alt="">
 
     <script src="script.js"></script>
   </body>

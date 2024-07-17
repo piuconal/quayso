@@ -600,7 +600,7 @@ function addWinnerToList(winner) {
         clearInterval(interval);
       }
     }, 100); // Hiển thị một ký tự mỗi 100ms
-  }, 15000); // Trì hoãn 3 giây trước khi bắt đầu
+  }, 16500); // Trì hoãn 3 giây trước khi bắt đầu
   // Xóa các phần tử li cũ sau 3 giây
   setTimeout(() => {
     const items = winnersList.querySelectorAll("li");
@@ -663,7 +663,7 @@ function handleBackButton() {
     remainingParticipants.push(lastWinner.name);
     currentPrizeCount--;
     k--;
-    
+
     if (currentPrizeCount < 0) {
       currentPrizeIndex--;
       currentPrizeCount = prizes[currentPrizeIndex].count - 1;
@@ -685,4 +685,15 @@ document.addEventListener("DOMContentLoaded", () => {
   remainingParticipants = [...participants];
   document.getElementById("winnersList").innerHTML = "";
   createPrizeButtons();
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const videoOverlay = document.getElementById("videoOverlay");
+  const demoVideo = document.getElementById("demoVideo");
+  const mainContent = document.getElementById("cc");
+
+  // Show the main content and hide the overlay when the video ends
+  demoVideo.addEventListener("ended", function () {
+    videoOverlay.style.display = "none";
+    mainContent.style.display = "block";
+  });
 });
