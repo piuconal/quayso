@@ -1,4 +1,3 @@
-let k = 0;
 const participants = [
   "Hà Văn Lượng ❤️ 13010084",
   "Nguyễn Văn Minh ❤️ 13040600",
@@ -513,6 +512,7 @@ let winners = [];
 let remainingParticipants = [...participants];
 let currentPrizeIndex = 0;
 let currentPrizeCount = 0;
+let k = 0;
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -543,7 +543,7 @@ function handleDrawPrize() {
     if (currentPrizeCount >= prize.count) {
       currentPrizeIndex++;
       currentPrizeCount = 0;
-      k=0;
+      k = 0;
     }
 
     showNextButton();
@@ -600,7 +600,7 @@ function addWinnerToList(winner) {
         clearInterval(interval);
       }
     }, 100); // Hiển thị một ký tự mỗi 100ms
-  }, 15000); // Trì hoãn 3 giây trước khi bắt đầu
+  }, 15); // Trì hoãn 3 giây trước khi bắt đầu
   // Xóa các phần tử li cũ sau 3 giây
   setTimeout(() => {
     const items = winnersList.querySelectorAll("li");
@@ -634,11 +634,12 @@ function createPrizeButtons() {
     button.addEventListener("click", function () {
       playSound();
       videoContainer.play();
+      document.getElementById("backBtn").style.display = "block";
       Container.style.display = "block"; // Ẩn container khi click vào nút "QUAY"
       setTimeout(function () {
         Container.style.display = "block";
         endSound(); // Hiển thị lại sau 2 giây
-      }, 15000);
+      }, 15);
       handleDrawPrize(prize); // Gọi hàm xử lý với giải thưởng tương ứng
     });
     buttonsContainer.appendChild(button);
@@ -656,6 +657,29 @@ function endSound() {
   audio1.play();
   audio.currentTime = 0;
 }
+function handleBackButton() {
+  if (winners.length > 0) {
+    const lastWinner = winners.pop();
+    remainingParticipants.push(lastWinner.name);
+    currentPrizeCount--;
+    k--;
+    
+    if (currentPrizeCount < 0) {
+      currentPrizeIndex--;
+      currentPrizeCount = prizes[currentPrizeIndex].count - 1;
+    }
+
+    const winnersList = document.getElementById("winnersList");
+    const items = winnersList.querySelectorAll("li");
+    if (items.length > 0) {
+      winnersList.removeChild(items[items.length - 1]);
+    }
+
+    showNextButton();
+  }
+}
+
+document.getElementById("backBtn").addEventListener("click", handleBackButton);
 document.addEventListener("DOMContentLoaded", () => {
   winners = [];
   remainingParticipants = [...participants];

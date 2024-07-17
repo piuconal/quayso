@@ -106,3 +106,22 @@ video {
   opacity: 0;
   transition: opacity 3s;
 }
+
+#backBtn{
+  position: absolute;
+  right: 135px;
+  bottom: 510px;
+  background-color: #007bff;
+  padding: 12px 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  color: #f0f0f0;
+  font-size: 20px;
+  display: none;
+}
+
+#backBtn:hover{
+  transform: scale(0.95);
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
